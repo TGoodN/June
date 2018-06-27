@@ -1,0 +1,55 @@
+<html>
+    
+    <head>
+        <title>Login and Register</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'login/css/mycss.css' %}"/>
+    </head>
+    
+    <body>
+        <div class="wrapper">
+    
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+    
+            <h1>Please log in or register</h1>
+            <form class="register" action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+    
+                <h3>Register</h3>
+                Name: <input type="text" name="name">
+                <br><br>
+                Username: <input type="text" name="username">
+                <br><br>
+                Password: <input type="password" name="password">
+                <br><br>
+                Confirm Password: <input type="password" name="password_confirmation">
+                <br><br>
+                <div class="form-group">
+                    Enter a hire date:
+                    <input type="date" name="dateHired" max="2018-12-31"><br>
+                </div>     
+                <p class="btnpar">
+                    <input type="submit" value="Register">
+                </p>
+            </form>
+    
+            <form class="login" action="{% url 'login' %}" method="post" style="width:264px;display: inline-block;padding: 20px;vertical-align: top;">
+                {% csrf_token %}
+                <h3>Login</h3>
+                Username: <input type="text" name="username">
+                <br><br>
+                Password: <input type="password" name="password">
+                <p class="btnpar">
+                    <input type="submit" value="Login">
+                </p>
+            </form>
+        </div>
+    </body>
+    
+    </html>

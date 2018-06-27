@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Wish Items</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'wish/css/mycss.css' %}"/>
+</head>
+
+<body>
+
+
+            <button><a href="{% url 'main' %}">Home</a></button>
+            <button><a href="{% url 'logout' %}">Logout</a></button>
+    <div class="wrapper">
+        <h1>{{ wish.description }}</h1>
+        <br>
+        <h2>Users that have added this item</h2>
+        {% for user in users %}
+            <h2> {{ user.name }} </h2>
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
